@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Peluquería OMI - Belleza, cabello, manicure y pedicure en San Pedro de los Milagros.">
+  <meta name="theme-color" content="#8d6b62">
+  <title>Peluquería OMI | Belleza & Estilo</title>
+
+  <style>
+    :root{
+      --rosa:#f5e9e4;
+      --rosa2:#ead4cd;
+      --cafe:#5b443d;
+      --cafe2:#80645a;
+      --crema:#fffaf7;
+      --dorado:#b18a62;
+      --texto:#3f302b;
+      --blanco:#fff;
+      --sombra:0 12px 35px rgba(82,57,48,.13);
+      --radio:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color:var(--texto);
+      background:var(--crema);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+
+    /* BARRA SUPERIOR */
+    .topbar{
+      background:var(--cafe);
+      color:white;
+      text-align:center;
+      padding:8px 15px;
+      font-size:.88rem;
+    }
+
+    /* NAVEGACIÓN */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,250,247,.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(91,68,61,.08);
+    }
+    .nav{
+      max-width:1150px;
+      margin:auto;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:10px 20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+    .logo{
+      width:50px;height:50px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:2px solid var(--dorado);
+      color:var(--cafe);
+      background:var(--rosa);
+      font-family:Georgia,serif;
+      font-size:20px;
+    }
+    .brand small{
+      display:block;
+      font-size:.65rem;
+      letter-spacing:2px;
+      color:var(--dorado);
+      margin-top:-4px;
+    }
+
+    nav ul{list-style:none;display:flex;gap:24px}
+    nav a{font-weight:700;font-size:.94rem;transition:.2s}
+    nav a:hover{color:var(--dorado)}
+
+    .nav-cta{
+      background:var(--cafe);
+      color:white;
+      padding:10px 16px;
+      border-radius:30px;
+      font-weight:700;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:calc(100vh - 112px);
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:35px;
+      padding:65px 7%;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(234,212,205,.75), transparent 32%),
+        radial-gradient(circle at 90% 80%, rgba(177,138,98,.15), transparent 28%),
+        var(--crema);
+      overflow:hidden;
+    }
+    .eyebrow{
+      color:var(--dorado);
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      font-size:.78rem;
+      margin-bottom:12px;
+    }
+    h1{
+      font-family:Georgia,serif;
+      font-size:clamp(3rem,7vw,5.8rem);
+      line-height:.98;
+      color:var(--cafe);
+      margin-bottom:20px;
+    }
+    h1 span{color:var(--dorado);font-style:italic}
+    .hero p{
+      max-width:600px;
+      font-size:1.1rem;
+      color:#705b53;
+      margin-bottom:28px;
+    }
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 22px;
+      border-radius:40px;
+      font-weight:800;
+      border:2px solid var(--cafe);
+      transition:.25s;
+      cursor:pointer;
+    }
+    .btn-primary{background:var(--cafe);color:white}
+    .btn-secondary{color:var(--cafe);background:white}
+    .btn:hover{transform:translateY(-3px);box-shadow:var(--sombra)}
+
+    .hero-photo{
+      min-height:500px;
+      border-radius:42% 42% 24px 24px;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+      background:
+        linear-gradient(rgba(91,68,61,.08),rgba(91,68,61,.12)),
+        url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
+      position:relative;
+    }
+    .hero-card{
+      position:absolute;
+      bottom:22px;
+      left:22px;
+      right:22px;
+      background:rgba(255,250,247,.94);
+      padding:18px 20px;
+      border-radius:20px;
+      box-shadow:var(--sombra);
+    }
+    .hero-card strong{font-family:Georgia,serif;font-size:1.25rem;color:var(--cafe)}
+
+    /* SECCIONES */
+    section{padding:85px 7%}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 42px}
+    .section-head h2{
+      font-family:Georgia,serif;
+      color:var(--cafe);
+      font-size:clamp(2rem,4vw,3.1rem);
+      margin-bottom:10px;
+    }
+    .section-head p{color:#75615a}
+
+    /* SERVICIOS */
+    .services{
+      background:linear-gradient(180deg,#fffaf7,#f7eee9);
+    }
+    .service-grid{
+      max-width:1150px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .service{
+      background:white;
+      padding:28px 20px;
+      border-radius:var(--radio);
+      box-shadow:var(--sombra);
+      text-align:center;
+      transition:.25s;
+      border:1px solid rgba(177,138,98,.12);
+    }
+    .service:hover{transform:translateY(-7px)}
+    .service-icon{font-size:2rem;margin-bottom:12px}
+    .service h3{color:var(--cafe);margin-bottom:8px}
+    .service p{font-size:.92rem;color:#7a6861}
+
+    /* GALERÍA */
+    .gallery{
+      max-width:1150px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .gallery figure{
+      height:300px;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+      position:relative;
+      background:#eee;
+    }
+    .gallery img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.5s;
+    }
+    .gallery figure:hover img{transform:scale(1.06)}
+    .gallery figcaption{
+      position:absolute;
+      left:12px;right:12px;bottom:12px;
+      padding:10px 14px;
+      border-radius:14px;
+      background:rgba(255,250,247,.9);
+      font-weight:800;
+      color:var(--cafe);
+    }
+
+    /* NOSOTROS */
+    .about{
+      max-width:1150px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:45px;
+      align-items:center;
+    }
+    .about-image{
+      min-height:430px;
+      border-radius:30px;
+      background:url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85") center/cover;
+      box-shadow:var(--sombra);
+    }
+    .about h2{
+      font-family:Georgia,serif;
+      font-size:3rem;
+      color:var(--cafe);
+      line-height:1.05;
+      margin-bottom:18px;
+    }
+    .checks{list-style:none;margin:22px 0}
+    .checks li{margin:10px 0}
+    .checks li::before{content:"✦";color:var(--dorado);margin-right:10px}
+
+    /* CONTACTO */
+    .contact{
+      background:var(--cafe);
+      color:white;
+    }
+    .contact .section-head h2{color:white}
+    .contact .section-head p{color:#eaded9}
+    .contact-grid{
+      max-width:1050px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .contact-card{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:22px;
+      padding:25px;
+      text-align:center;
+    }
+    .contact-card .icon{font-size:2rem;margin-bottom:8px}
+    .contact-card h3{margin-bottom:6px}
+    .contact-card a{color:#f4dccc;font-weight:800}
+
+    /* PIE */
+    footer{
+      background:#3f302b;
+      color:#eaded9;
+      text-align:center;
+      padding:25px 15px 90px;
+      font-size:.9rem;
+    }
+
+    /* WHATSAPP FLOTANTE */
+    .whatsapp{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:2000;
+      width:62px;height:62px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#25D366;
+      color:white;
+      font-size:28px;
+      box-shadow:0 8px 25px rgba(0,0,0,.25);
+      animation:pulse 2.2s infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.07)}
+    }
+
+    /* BOTÓN MENÚ MÓVIL */
+    .menu-btn{display:none;border:0;background:none;font-size:28px;color:var(--cafe);cursor:pointer}
+
+    @media(max-width:850px){
+      nav ul{
+        display:none;
+        position:absolute;
+        left:15px;right:15px;top:74px;
+        background:var(--crema);
+        padding:20px;
+        border-radius:20px;
+        box-shadow:var(--sombra);
+        flex-direction:column;
+        gap:15px;
+      }
+      nav ul.open{display:flex}
+      .menu-btn{display:block}
+      .nav-cta{display:none}
+      .hero{grid-template-columns:1fr;padding-top:45px}
+      .hero-photo{min-height:390px}
+      .service-grid{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .about-image{min-height:350px}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:560px){
+      section{padding:65px 5%}
+      .hero{padding:40px 5%}
+      .hero-photo{min-height:350px}
+      .service-grid,.gallery{grid-template-columns:1fr}
+      .gallery figure{height:330px}
+      .about h2{font-size:2.4rem}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">✨ Belleza, cuidado y estilo en San Pedro de los Milagros ✨</div>
+
+  <header>
+    <div class="nav">
+      <a class="brand" href="#inicio" aria-label="Peluquería OMI">
+        <div class="logo">OMI</div>
+        <div>
+          PELUQUERÍA OMI
+          <small>BELLEZA & ESTILO</small>
+        </div>
+      </a>
+
+      <nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+        <ul id="menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- CAMBIA EL NÚMERO 573113777873 POR EL WHATSAPP REAL DE OMI -->
+      <a class="nav-cta" href="https://wa.me/573113777873?text=Hola%20Peluquer%C3%ADa%20OMI%2C%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">Agendar cita</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <div class="eyebrow">Peluquería · Manicure · Pedicure</div>
+        <h1>Tu belleza,<br><span>tu estilo.</span></h1>
+        <p>
+          En <strong>Peluquería OMI</strong> cuidamos cada detalle para que
+          salgas sintiéndote increíble. Cabello, uñas y belleza en un espacio
+          pensado para ti.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#servicios">Ver servicios</a>
+          <a class="btn btn-secondary" href="https://wa.me/573113777873?text=Hola%20OMI%2C%20quiero%20consultar%20por%20una%20cita." target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-photo" aria-label="Imagen de peluquería">
+        <div class="hero-card">
+          <strong>Un espacio para consentirte</strong><br>
+          <span>San Pedro de los Milagros · Antioquia</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="section-head">
+        <div class="eyebrow">Lo que hacemos</div>
+        <h2>Servicios para realzar tu belleza</h2>
+        <p>Elige tu servicio y escríbenos para consultar disponibilidad y precios.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service">
+          <div class="service-icon">💇‍♀️</div>
+          <h3>Cabello</h3>
+          <p>Cortes, peinados y cuidado para que tu cabello luzca espectacular.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">💅</div>
+          <h3>Manicure</h3>
+          <p>Uñas cuidadas y diseños para darle personalidad a tu estilo.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">🦶</div>
+          <h3>Pedicure</h3>
+          <p>Cuidado y belleza para tus pies en un momento de relajación.</p>
+        </article>
+        <article class="service">
+          <div class="service-icon">✨</div>
+          <h3>Belleza</h3>
+          <p>Un servicio pensado para que te sientas especial de principio a fin.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="section-head">
+        <div class="eyebrow">Nuestro trabajo</div>
+        <h2>Galería OMI</h2>
+        <p>Estas imágenes son de muestra. Podemos reemplazarlas por las fotos reales de OMI.</p>
+      </div>
+
+      <div class="gallery">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=85" alt="Trabajo de cabello">
+          <figcaption>Cabello & estilo</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85" alt="Manicure">
+          <figcaption>Manicure</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85" alt="Diseño de uñas">
+          <figcaption>Diseño de uñas</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=85" alt="Belleza">
+          <figcaption>Detalles que enamoran</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=85" alt="Salón de belleza">
+          <figcaption>Tu momento OMI</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=85" alt="Estilo y belleza">
+          <figcaption>Tu estilo, tu esencia</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="about">
+        <div class="about-image"></div>
+        <div>
+          <div class="eyebrow">Conoce OMI</div>
+          <h2>Un lugar para sentirte aún más tú.</h2>
+          <p>
+            Queremos que cada visita sea una experiencia agradable: un espacio
+            femenino, acogedor y con ese toque de glamour que hace especial
+            cada detalle.
+          </p>
+          <ul class="checks">
+            <li>Atención cercana y personalizada</li>
+            <li>Servicios de cabello y uñas</li>
+            <li>Ambiente cómodo y femenino</li>
+            <li>Agenda tu cita directamente por WhatsApp</li>
+          </ul>
+          <a class="btn btn-primary" href="#contacto">Cómo encontrarnos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="section-head">
+        <div class="eyebrow">Hablemos</div>
+        <h2>Agenda tu próxima cita</h2>
+        <p>Escríbenos para consultar horarios, servicios y precios.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">📱</div>
+          <h3>WhatsApp</h3>
+          <p><a href="https://wa.me/573113777873?text=Hola%20Peluquer%C3%ADa%20OMI%2C%20quiero%20agendar%20una%20cita." target="_blank" rel="noopener">Escribir ahora</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>San Pedro de los Milagros<br>Antioquia, Colombia</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">💖</div>
+          <h3>OMI</h3>
+          <p>Cabello · Manicure · Pedicure</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Peluquería OMI</strong><br>
+    Belleza & estilo · San Pedro de los Milagros<br><br>
+    © <span id="year"></span> Peluquería OMI. Todos los derechos reservados.
+  </footer>
+
+  <a class="whatsapp"
+     href="https://wa.me/573113777873?text=Hola%20Peluquer%C3%ADa%20OMI%2C%20quiero%20agendar%20una%20cita."
+     target="_blank"
+     rel="noopener"
+     aria-label="Contactar por WhatsApp">✆</a>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+
+    document.querySelectorAll("#menu a").forEach(link => {
+      link.addEventListener("click", () => menu.classList.remove("open"));
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
